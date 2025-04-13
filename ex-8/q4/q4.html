@@ -1,0 +1,19 @@
+<html>
+    <script>
+        var x = prompt("Enter the number of hours worked");
+        x = Number(x);
+        while(!Number.isInteger(x)){
+            x = prompt("Enter a valid number");
+            x = Number(x);
+        }
+        var y = prompt("Enter the cost of materials");
+        y = Number(y);
+        while(!Number.isInteger(y)){
+            y = prompt("Enter a valid number");
+            y = Number(y);
+        }
+        const a = 45*x;
+        let b = a+y
+        alert("Labour cost: "+a+"\nTotal Charge: "+b);
+    </script>
+</html>

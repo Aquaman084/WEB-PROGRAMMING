@@ -1,0 +1,35 @@
+<html>
+    <script>
+        var x = prompt("Enter number 1");
+        x = Number(x);
+        while(!Number.isInteger(x)){
+            x = prompt("Enter a valid number");
+            x = Number(x);
+        } 
+        var y = prompt("Enter number 2");
+        y = Number(y);
+        while(!Number.isInteger(y)){
+            y = prompt("Enter a valid number");
+            y = Number(y);
+        }
+        var z = prompt("Enter the operator");
+        switch(z){
+            case '+':
+                alert(x + y);
+                break;
+            case '-':
+                alert(x - y);
+                break;
+            case '/':
+                alert(x / y);
+                break;
+            case '*':
+                alert(x * y);
+                break;  
+            case '%':
+                alert(x % y);
+            default:
+                alert("Enter a valid operator");
+        }
+    </script>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Order Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d1d5b3;
+            text-align: center;
+        }
+        .container {
+            width: 400px;
+            margin: auto;
+            background: #8a9365;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            color: black;
+        }
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            width: 100%;
+            text-align: left;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 48%;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+        }
+        .products {
+            text-align: left;
+        }
+        .product-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .product-item img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .product-info {
+            flex-grow: 1;
+            padding-left: 10px;
+        }
+        .product-item input[type="number"] {
+            width: 50px;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            text-align: center;
+        }
+        button {
+            background-color: #a67c52;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Grocery Order Form</h2>
+        <div class="form-group">
+            <label>Customer Name</label>
+            <input type="text" id="first-name">
+        </div>
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" id="phone">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email">
+        </div>
+        <h3>Products</h3>
+        <div class="products">
+            <div class="product-item">
+                <img src="../apple.jpg" alt="Apple">
+                <input type="checkbox" class="product" value="Apple" data-price="10">
+                <div class="product-info">
+                    <label>Apple - $10/kg</label>
+                </div>
+                <input type="number" class="quantity" min="1" max="10" value="1"> kg
+            </div>
+            <div class="product-item">
+                <img src="../banana.jpg" alt="Banana">
+                <input type="checkbox" class="product" value="Banana" data-price="5">
+                <div class="product-info">
+                    <label>Banana - $5/kg</label>
+                </div>
+                <input type="number" class="quantity" min="1" max="10" value="1"> kg
+            </div>
+            <div class="product-item">
+                <img src="../avocado.webp" alt="Avocado">
+                <input type="checkbox" class="product" value="Avocado" data-price="7">
+                <div class="product-info">
+                    <label>Avocado - $7/kg</label>
+                </div>
+                <input type="number" class="quantity" min="1" max="10" value="1"> kg
+            </div>
+        </div>
+        <button onclick="submitOrder()">SUBMIT</button>
+    </div>
+    <script>
+        function submitOrder() {
+            let firstName = document.getElementById("first-name").value;
+            let phone = document.getElementById("phone").value;
+            let email = document.getElementById("email").value;
+            let selectedProducts = [];
+            let products = document.querySelectorAll(".product");
+            let quantities = document.querySelectorAll(".quantity");
+            products.forEach((product, index) => {
+                if (product.checked) {
+                    selectedProducts.push({
+                        name: product.value,
+                        price: product.getAttribute("data-price"),
+                        quantity: quantities[index].value
+                    });
+                }
+            });
+            let orderDetails = { firstName, phone, email, selectedProducts };
+            localStorage.setItem("order", JSON.stringify(orderDetails));
+            window.location.href = "receipt.html";
+        }
+    </script>
+</body>
+</html>

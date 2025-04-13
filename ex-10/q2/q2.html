@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Selection Example</title>
+    <style>
+        .input-field { 
+            padding: 5px; 
+            margin: 5px; 
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Original Title</h1>
+    <input type="text" name="username">
+    
+    <p class="info">First paragraph</p>
+    <p class="info">Second paragraph</p>
+    <p>Another paragraph</p> 
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul> 
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <br> 
+    <input type="checkbox" class="hobby" value="Reading"> Reading
+    <input type="checkbox" class="hobby" value="Traveling"> Traveling
+    <input type="checkbox" class="hobby" value="Gaming"> Gaming
+    <br>
+    <input type="text" class="input-field">
+    <input type="text" class="input-field">
+    <script>
+        // (a) Using getElementById
+        document.getElementById("title").textContent = "Updated Title";
+        
+        // (b) Using getElementsByName
+        let usernameField = document.getElementsByName("username")[0];
+        usernameField.value = "John Doe";
+        let radioButtons = document.getElementsByName("gender");
+        for (let radio of radioButtons) {
+            if (radio.checked) {
+                console.log("Selected Gender:", radio.value);
+            }
+        }
+        // (c) Using getElementsByTagName
+        let paragraphs = document.getElementsByTagName("p");
+        console.log("Total number of <p> elements:", paragraphs.length);
+        
+        let listItems = document.getElementsByTagName("li");
+        for (let li of listItems) {
+            console.log("List item:", li.textContent);
+        }
+        // (d) Using getElementsByClassName
+        let inputFields = document.getElementsByClassName("input-field");
+        for (let input of inputFields) {
+            input.style.backgroundColor = "lightblue";
+        }
+
+        // (e) Using querySelector
+        let firstInfoParagraph = document.querySelector("p.info");
+        if (firstInfoParagraph) {
+            firstInfoParagraph.textContent = "This is the first info paragraph";
+        }
+        let firstRadioButton = document.querySelector("input[name='gender']");
+        if (firstRadioButton) {
+            firstRadioButton.checked = true;
+        }
+        // (f) Using querySelectorAll
+        let infoParagraphs = document.querySelectorAll("p.info");
+        infoParagraphs.forEach(p => console.log("Info paragraph:", p.textContent));
+        let checkboxes = document.querySelectorAll(".hobby");
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = true;
+            console.log("Checked hobby:", checkbox.value);
+        });
+    </script>
+</body>
+</html>

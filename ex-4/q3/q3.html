@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Product Feedback</title>
+    </head>
+    <body>
+        <h1>Product Feedback</h1>
+        <label for="quality">Quality:</label>
+        <input type="range" id="quality" min="0" max="10" value="0" oninput="updateTotal()">
+        <label id="qualityValue">0</label><br><br>
+        <label for="value">Value for Money:</label>
+        <input type="range" id="value" min="0" max="10" value="0" oninput="updateTotal()">
+        <label id="valueValue">0</label><br><br>
+        <label for="usability">Usability:</label>
+        <input type="range" id="usability" min="0" max="10" value="0" oninput="updateTotal()">
+        <label id="usabilityValue">0</label><br><br>
+        <label>Total Rating:</label>
+        <output id="total">0</output>
+        <script>
+            function updateTotal() {
+            var quality =+ document.getElementById('quality').value;
+            var value =+ document.getElementById('value').value;
+            var usability =+ document.getElementById('usability').value;
+            
+            document.getElementById('qualityValue').textContent = quality;
+            document.getElementById('valueValue').textContent = value;
+            document.getElementById('usabilityValue').textContent = usability;
+            document.getElementById('total').textContent = quality + value + usability;
+            }
+        </script>
+        </body>
+</html>

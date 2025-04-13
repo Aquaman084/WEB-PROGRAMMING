@@ -1,0 +1,24 @@
+<html>
+    <script>
+        var x = prompt("Enter your age");
+        x = Number(x);
+        while(!Number.isInteger(x) || x>120){
+            x = prompt("Enter a valid age");
+            x = Number(x);
+        }
+        if(x < 18){
+            alert("Not eligible");
+        }
+       
+        else{
+            var y = prompt("Do you have a licence");
+            const a = "yes";
+            if(a.localeCompare(y)== 0){
+                alert("Eligible");
+            }
+            else{
+                alert("Get a licence first!");
+            }
+        }  
+    </script>
+</html>

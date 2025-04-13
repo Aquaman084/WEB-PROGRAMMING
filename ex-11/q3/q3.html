@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        label { 
+            display: inline-block; width: 150px; 
+        }
+        .error { 
+            color: red; 
+        }
+        #timer { 
+            float: right; border: 1px solid black; padding: 5px; 
+        }
+        .txt{
+            margin-left: 400px;
+        }
+        #timer {
+            border: 1px solid black; 
+            padding: 5px;
+            display: inline-block;
+            margin-left: 60px;
+            font-weight: bold;
+            background-color: #f8f9fa;
+        }
+        fieldset {
+            width: 50%;  /* Adjust the width as needed */
+            margin: auto; /* Center the fieldset */
+            padding: 20px;
+            border-radius: 10px; /* Optional: rounded corners */
+        }
+    </style>
+</head>
+<body>
+    <form name="myForm" onsubmit="return validate()">
+        <fieldset>
+            <div id="timer"></div>
+            <h3>Test JavaScript Form Validation</h3>
+            <label>Name<span style="color: red">*</span></label><input type="text" name="name"/><span id="nameError" class="error"></span><br/><br/>
+            <label>Address</label><textarea name="address"></textarea><span id="addressError" class="error"></span><br/><br/>
+            <label>Zip Code<span style="color: red">*</span></label><input type="text" name="zip"/><span id="zipError" class="error"></span><br/><br/>
+            <label>Country<span style="color: red">*</span></label>
+            <select name="country">
+                <option value="">--Select--</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="Others">Others</option>
+            </select><span id="countryError" class="error"></span><br/><br/>
+            <label>Gender<span style="color: red">*</span></label>
+            <input type="radio" name="gender" value="Male"/>Male
+            <input type="radio" name="gender" value="Female"/>Female
+            <div class="txt">
+            <label>PAN No</label><input type="text" name="pan"/><span id="panError" class="error"></span>
+            </div>
+            <span id="genderError" class="error"></span><br/><br/>
+            <label>Preferences<span style="color: red">*</span></label>
+            <input type="checkbox" name="preferences" value="Red"/>Red
+            <input type="checkbox" name="preferences" value="Green"/>Green
+            <input type="checkbox" name="preferences" value="Blue"/>Blue
+            <span id="preferencesError" class="error"></span><br/><br/>
+            <label>Phone<span style="color: red">*</span></label><input type="text" name="phone"/><span id="phoneError" class="error"></span><br/><br/>
+            <label>Email<span style="color: red">*</span></label><input type="text" name="email"/><span id="emailError" class="error"></span><br/><br/>
+            <label>Password<span style="color: red">*</span></label><input type="password" name="password"/><span id="passwordError" class="error"></span><br/><br/>
+            <label>Verify Password<span style="color: red">*</span></label><input type="password" name="verifypassword"/><span id="verifyError" class="error"></span><br/><br/>
+            
+            <button type="submit">SUBMIT</button>
+            <button type="reset">CLEAR</button>
+        </fieldset>
+    </form>
+    <script>
+        function updateTime() {
+            document.getElementById("timer").innerHTML = "Time: " + new Date().toLocaleTimeString();
+        }
+        setInterval(updateTime, 1000);
+
+        function validate() {
+            var form = document.forms["myForm"];
+            var errors = false;
+            function setError(id, message) {
+                document.getElementById(id).innerHTML = message;
+                errors = true;
+            }
+            document.querySelectorAll(".error").forEach(el => el.innerHTML = "");
+
+            if (!/^[A-Za-z]{1,15}$/.test(form.name.value)) setError("nameError", "Enter valid name (max 15 letters)");
+            
+            if (!/^[0-9]{6}$/.test(form.zip.value)) setError("zipError", "Zip code must be 6 digits");
+            if (form.country.value === "") setError("countryError", "Select a country");
+            if (!form.gender.value) setError("genderError", "Select gender");
+            if (!document.querySelector("input[name='preferences']:checked")) setError("preferencesError", "Select at least one preference");
+            if (!/^[0-9]{10}$/.test(form.phone.value)) setError("phoneError", "Phone must be 10 digits");
+            if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(form.email.value)) setError("emailError", "Invalid email format");
+            if (!/^(?=.*\d)(?=.*[A-Za-z])(?=.*[?!*%$@])[A-Za-z\d?!*%$@]{8,15}$/.test(form.password.value)) setError("passwordError", "Password must be 8-15 characters, including a number and special character");
+            if (form.password.value !== form.verifypassword.value) setError("verifyError", "Passwords do not match");
+            if (!/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(form.pan.value)) setError("panError", "Invalid PAN format");
+
+            return !errors;
+        }
+    </script>
+</body>
+</html>

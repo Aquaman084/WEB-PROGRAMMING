@@ -1,0 +1,49 @@
+<html>
+<head>
+    <style>
+        table, th, td {
+            border: solid black 1px;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+    </style>
+</head>
+<script>
+    const a = [
+        [1, "Alen", 39], [2, "Deena", 47], [3, "Diana", 21],
+        [4, "Jack", 54], [5, "Jain", 23], [6, "Kelvin", 61],
+        [7, "Louis", 69], [8, "Rex", 49]];
+    function dec() {
+        a.sort((x, y) => y[2] - x[2]);
+        displayTable(a);
+    }
+    function check() {
+        var x = prompt("Enter the P-ID to be checked");
+        var flag = a.some(item => item[0] == x);
+        alert("The P-ID " + x + (flag ? " is present" : " is not present"));
+    }
+    function range() {
+        var x = parseInt(prompt("Enter the lower range"));
+        var y = parseInt(prompt("Enter the upper range"));
+        var filtered = a.filter(item => item[2] >= x && item[2] <= y);
+        displayTable(filtered);
+    }
+    function displayTable(data) {
+        let tab = "<table><tr><th>P-Id</th><th>Name</th><th>Age</th></tr>";
+        data.forEach(item => {
+            tab += `<tr><td>${item[0]}</td><td>${item[1]}</td><td>${item[2]}</td></tr>`;
+        });
+        tab += "</table>";
+        document.getElementById("output").innerHTML = tab;
+    }
+</script>
+<body>
+    <p>Click the button to sort the age in descending order.</p>
+    <button onclick="dec()">Click Me</button><br><br>
+    <p>Click the button to check if a P-ID is present or not.</p>
+    <button onclick="check()">Click Me</button><br><br>
+    <p>Click the button to filter the age within a given range.</p>
+    <button onclick="range()">Click Me</button><br><br>
+    <div id="output"></div>
+</body>
+</html>

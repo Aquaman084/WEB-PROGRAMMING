@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <title>23BCE1260</title>
+    </head>
+    <style>
+        label{
+            width : 140px; margin-bottom: 10px; display: inline-block; font-family: Verdana;
+        }
+        legend{
+            color : red;
+            font-family: Verdana;
+            font-weight: bold;
+        }
+    </style>
+    <body>
+        <form>
+            <fieldset>
+                <legend> Personal Details </legend>
+                <br>
+                <br>
+                <label for = "name" > Name: </label>
+                <input type = "text" id = "name" name = "name" required>
+                <br>
+                <label for = "Password"> Password: </label>
+                <input type = "password" id = "password" name = "password" required>
+                <br>
+                <label for = "Email-id"> E-mail id: </label>
+                <input type = "text" id = "Email-id" name = "Email-id" required>
+                <br>
+                <label for = "gender"> Gender: </label>
+                <input type = "radio" id = "male" name = "gender" >
+                <label for = "male">Male</label>
+                <input type = "radio" id = "female" name = "gender">
+                <label for = "female">Female</label>
+                <br>
+                <label for = "DOB"> DOB: </label>
+                <input type = "date" name = "DOB" id = "DOB">
+                <br>
+                <label for = "no"> Mobile# </label>
+                <input type = "tel" name = "no" id = "no" required>
+            </fieldset>
+ 
+            <fieldset>
+                <legend>Educational Qualification</legend>
+                <br>
+                <br>
+                <label for = "degree"> Degree: </label>
+                <select id = "degree" name = "degree" >
+                    <option value = "--Select Group--">--Select Group--</option>
+                    <optgroup label = "UG">
+                        <option value = "BE"> BE </option>
+                        <option value = "BTech"> BTech </option>
+                        <option value = "BSc"> BSc </option>
+                        <option value = "BA"> BA </option>
+                        <option value = "BCA"> BCA </option>
+                        <option value = "BBA"> BBA </option>
+                        <option value = "others"> Others </option>
+                    </optgroup>
+ 
+                    <optgroup label = "PG">
+                        <option value = "ME"> ME </option>
+                        <option value = "MTech"> MTech </option>
+                        <option value = "MSc"> MSc </option>
+                        <option value = "MA"> MA </option>
+                        <option value = "MCA"> MCA </option>
+                        <option value = "MBA"> MBA </option>
+                        <option value = "others"> Others </option>
+                    </optgroup>
+ 
+                    <optgroup label = "PhD">
+                        <option value = "Eng">Engineering</option>
+                        <option value = "sci"> Science </option>
+                        <option value = "man"> Management </option>
+                        <option value = "others"> Others </option>
+                    </optgroup>
+                </select>
+                &nbsp;
+                &nbsp;
+                <label for = " engi"> Engineering: </label>
+                <select id = "engi" name = "engi" >
+                    <option value = "--Select Group--">--Select Group--</option>
+                    <option value = "cse">CSE</option>
+                    <option value = "ece">ECE</option>
+                    <option value = "eee">EEE</option>
+                    <option value = "civil">CIVIL</option>
+                    <option value = "mech">MECH</option>
+                </select>
+            </fieldset>
+            <br>
+            <label for = "hobbies"> Hobbies: </label>
+            <input type = "checkbox" id = "chess" name = "hobbies">
+            <label for = "chess"> Playing chess </label>
+ 
+            <input type = "checkbox" id = "books" name = "hobbies">
+            <label for = "books"> Reading Books </label>
+            <br>
+ 
+            <label for = "colour">Favourite Color: </label>
+            <input type = "color" id = "colour" value = #0000>
+ 
+            <legend> Address </legend>
+            <textarea column = "100" row = "10"></textarea>
+            <br>
+            <br>
+ 
+            <label for = "file"> Attach Resume: </label>
+            <input type = "file" id = "file" name = "file">
+            <br>
+            <br>
+            <input type = "Submit" value = "Submit">
+        </form>
+    </body>
+</html
